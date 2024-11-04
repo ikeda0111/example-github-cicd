@@ -1,0 +1,12 @@
+name: Schedule
+
+on:
+  schedule:
+    - cron: '0 8 4 11 *' # UTC 11月4日 8時0分
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: date

@@ -1,0 +1,16 @@
+name: Intermediate environment variables
+
+on: push
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+
+    env:
+      ACTOR: ${{ github.actor }} # コンテキストの値を環境変数に設定
+
+    steps:
+      - run: echo "The actor is ${ACTOR}" # 環境変数経由でコンテキストのプロパティを参照
+
+# 1. コンテキストはシェルコマンドへハードコードせず、環境変数を経由して渡す
+# 2. 環境変数は全てダブルクォーテーションで囲む

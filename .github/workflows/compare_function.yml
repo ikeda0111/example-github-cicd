@@ -12,4 +12,4 @@ jobs:
           CONTAINS_FUNC: ${{contains('Hello', 'ell')}}
           STARTS_WITH_FUNC: ${{startsWith('Hello', 'He')}}
           ENDS_WITH_FUNC: ${{endsWith('Hello', 'lo')}}
-          CONTAINS_ARRAY_FUNC: ${{contains(github.event.commits.author, 'ikeda0111')}}
+          CONTAINS_ARRAY_FUNC: ${{contains(github.event.commits.author.username, 'ikeda0111')}}

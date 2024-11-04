@@ -8,3 +8,5 @@ jobs:
 
     steps:
       - run: echo "Github context is ${{ toJson(github) }}"
+
+      - run: echo "Runner context is ${{ toJson(runner) }}"

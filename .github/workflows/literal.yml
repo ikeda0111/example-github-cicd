@@ -9,8 +9,8 @@ jobs:
     steps:
       - run: printenv | grep 'LITERAL_'
         env:
-          LITERAL_NUL: ${{ null }} # null型
+          LITERAL_NULL: ${{ null }} # null型
           LITERAL_BOOL: ${{ true }} # boolean型
           LITERAL_NUM: ${{ 42 }} # number型
           LITERAL_STR: ${{ 'Hello, world!' }} # string型
-          LITERAL_ARR: Hello, world! # string型省略形
+          LITERAL_STR_SHORT : Hello, world! # string型省略形

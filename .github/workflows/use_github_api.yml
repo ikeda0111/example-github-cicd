@@ -1,0 +1,19 @@
+name: Comment
+
+on:
+  push:
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    permissions: # GITHUB_TOKENの権限を指定
+      pull-requests: write # フレームワーの書き込みを許可
+      contents: read # リポジトリの読み取りを許可
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Comment
+        run: gh pr comment "${GITHUB_HEAD_REF}" -b "Hello, ${GITHUB_ACTOR}!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # or github.token

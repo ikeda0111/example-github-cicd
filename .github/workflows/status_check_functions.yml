@@ -1,0 +1,17 @@
+name: Status check functions
+
+on:
+  push:
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+      - run: echo "This step will not be executed"
+  success:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+      - run: echo "This step will be executed"
+        if: ${{ failure() }} # failジョブが失敗した場合のみ実行

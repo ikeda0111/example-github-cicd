@@ -1,0 +1,13 @@
+name: GITHUB_ENV
+
+on:
+  push:
+
+jobs:
+  steps:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "RESULT=hello" >> "${GITHUB_ENV}" # GITHUB_ENVへの書き出し
+      - run: echo "${RESULT}" # 通常の環境変数として参照
+
+# GITHUB_ENVへの書き出しは事実上のグローバル変数であるのでこだわりがなければGITHUB_OUTPUT環境変数を利用したほうが良い

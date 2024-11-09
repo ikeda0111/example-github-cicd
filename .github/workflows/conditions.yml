@@ -10,4 +10,5 @@ jobs:
       RUN_ID: ${{ github.run_id }}
     steps:
       - run: echo "Hello $RUN_ID"
-        if: ${{contains(github.run_id , '1')}} # ワークフローIDが1である場合のみ実行
+        # ワークフローIDの最後が1である場合のみ実行
+        if: endsWith(env.RUN_ID, '1')

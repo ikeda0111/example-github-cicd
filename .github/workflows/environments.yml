@@ -1,0 +1,21 @@
+name: Environments
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment-name:
+        type: environment
+        default: test
+        required: false
+        description: 'The name of the environment'
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment-name }}
+    env:
+      USERNAME: ${{ vars.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+    steps:
+      - run: echo "${USERNAME}" # 環境変数を表示
+      - run: echo "${PASSWORD:0:1} ${PASSWORD#?}"  # シークレットを表示

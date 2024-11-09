@@ -1,0 +1,16 @@
+name: Add mask
+
+on:
+  push:
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    env:
+      PASSWORD: SuperSecretValue
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add mask
+        run: echo "::add-mask::${PASSWORD}" # パスワードをマスクする
+      - name: Show masked value
+        run: echo "${PASSWORD}" # マスクされたパスワードを表示する

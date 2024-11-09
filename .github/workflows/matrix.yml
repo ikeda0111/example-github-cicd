@@ -1,0 +1,41 @@
+name: Matrix
+
+on:
+  push:
+
+jobs:
+  matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "${RUNNER_OS}"
+        shell: bash
+  multiple-matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [18, 20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: echo "${RUNNER_OS}" && node --version
+        shell: bash
+  include-matrix:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node: 18
+          - os: macos-latest
+            node: 20
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: echo "${RUNNER_OS}" && node --version
+        shell: bash

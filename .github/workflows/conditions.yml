@@ -1,0 +1,12 @@
+name: Conditions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  conditions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Hello"
+        if: ${{contains(github.run_id , '1')}} # ワークフローIDが1である場合のみ実行

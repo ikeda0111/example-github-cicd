@@ -17,3 +17,4 @@ jobs:
         run: gh pr comment "${GITHUB_HEAD_REF}" -b "Hello, ${GITHUB_ACTOR}!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # or github.token
+          # Github CLIを利用する際には secrets.GITHUB_TOKEN または github.token をGITHUB_TOKEN環境変数に設定する必要がある

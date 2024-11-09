@@ -1,0 +1,12 @@
+name: Annotation
+
+on:
+  push:
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "::error::This is an error message" # Error レベルのアノテーション
+      - run: echo "::warning::This is a warning message" # Warning レベルのアノテーション
+      - run: echo "::notice::This is a notice message" # Notice レベルのアノテーション

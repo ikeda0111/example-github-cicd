@@ -1,0 +1,22 @@
+name: Static Analysis
+
+on:
+  pull_request:
+    paths: ['.github/workflows/*.y?aml']
+
+defaults:
+  run:
+    shell: bash # Shellキーを指定することで起動オプションが変わり、パイプ処理時のエラーを拾えるようになる。※ 省略時のデフォルトは`bash -e {0}`
+concurrency:
+  group: ${{ github.workflow }}-${{ github.actor }} # Groupを組むことで、同時に実行されるジョブを制限できる。※ この例では、同じワークフローとアクターであれば、同時に実行されるジョブを1つに制限している。
+  cancel-in-progress: true # cancel-in-progressをtrueにすることで、同時に実行されているジョブをキャンセルできる。
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run linters
+        run: |
+          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:latest

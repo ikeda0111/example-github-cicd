@@ -1,0 +1,16 @@
+name: Job summaries
+
+on:
+  push:
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | # マークダウンテキストをジョブサマリーに表示する
+          echo "## Example Title :rocket:" >> "${GITHUB_STEP_SUMMARY}"
+          echo "### Example Subtitle" >> "${GITHUB_STEP_SUMMARY}"
+          echo "This is an example of how to use the job summary feature." >> "${GITHUB_STEP_SUMMARY}"
+          echo "#### Example Details" >> "${GITHUB_STEP_SUMMARY}"
+          echo "1. This is a list item." >> "${GITHUB_STEP_SUMMARY}"
+          echo "2. This is another list item." >> "${GITHUB_STEP_SUMMARY}"

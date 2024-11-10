@@ -11,7 +11,7 @@ inputs:
     description: コンテキストをログ出力するか
 outputs:
   dumped-date:
-    value: ${{ steps.current.outputs.date}}
+    value: ${{ steps.current.outputs.date }}
     description: ダンプ日時
 
 runs:
@@ -29,4 +29,4 @@ runs:
     - id: current
       name: set dumped date
       shell: bash
-      run: echo "date=${date}" >> "${GITHUB_OUTPUT}"
+      run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"

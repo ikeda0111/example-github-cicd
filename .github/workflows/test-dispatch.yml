@@ -1,0 +1,23 @@
+name: Test Dispatch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check_ref:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.ref }}"
+  check_event:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event }}"
+  check_event_path:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event_path }}"
+  check_event_name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event_name }}"
+
